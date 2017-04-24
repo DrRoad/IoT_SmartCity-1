@@ -13,9 +13,9 @@ count1 = 0
 sensorid = 101
 sensorid2 = 1
 
-TCP_IP = '127.0.0.2'
+TCP_IP = '127.0.0.1'
 
-TCP_PORT = 5005
+TCP_PORT = 5006
 
 BUFFER_SIZE = 500
 
