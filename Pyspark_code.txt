@@ -1,7 +1,11 @@
 import time
 count = 0
 count1 = 0
-threshold=14
+threshold1=14
+threshold2=18
+threshold3=18
+threshold4=16
+threshold5=19
 while(1):
 	dataRDD = sc.textFile("/user/cloudera/virtualsensor1/netcat.*")
 	for line in dataRDD.collect():
@@ -9,7 +13,7 @@ while(1):
 		a=int(a)
 		b=int(b)
 		if(a<201):
-			if(b<threshold):
+			if(b<threshold1):
 				print "Oxygen pump " ,a, " turned ON"
 				count1=a
 			else:
@@ -17,17 +21,17 @@ while(1):
 					print "Oxygen pump " ,a, " turned OFF"
 				print("Oxygen level at ",a," OKAY")
 		if(200<a<401):
-			if(b<threshold):
+			if(b>threshold2):
 				print "Fire Alarm " ,a-200, " turned ON  "
 			else:
 				print("No fire or hazardous gases")
 		if(400<a<601):
-			if(b<threshold):
+			if(b>threshold3):
 				print "Parking " ,a-400, " is FULL  "
 			else:
 				print("Parking " ,a-400, " has spaces")
 		if(600<a<801):
-			if(b<threshold):
+			if(b<threshold4):
 				print "Lights at " ,a-600, " turned ON"
 				count4=(a-600)
 			else:
@@ -36,10 +40,10 @@ while(1):
 				print("Luminosity level at" ,(a-600), " OKAY")
 		
 		if(a>800):
-			if(b<threshold):
+			if(b>threshold5):
 				print "Garbage at " ,a-800, " is Full"
 			else:		
 				print("Garbage at " ,a-800, " has space")
 	count=0
 	count1=0	
-	time.sleep(10)
+time.sleep(10)
